@@ -1,0 +1,28 @@
+
+# Dependencies
+.venv
+__pycache__
+frontend/node_modules
+frontend/.next
+frontend/dist
+frontend/.vite
+
+# System
+.DS_Store
+
+# Large Data & Raw Datasets (Exclude raw sensitive/large data)
+SEPA_River_Flood_Maps_v3_0/
+SEPA_River_Flood_Maps_v3_0.zip
+Building_Property_Datasets/
+SG_SIMD_2020/
+GB_Postcodes/
+database_resources/
+oracle_exports/
+processed_data/
+
+# Keep web_data but ignore large logic if needed (Assuming web_data is the optimized output)
+# If web_data/*.geojson is too big (>100MB), we might need to ignore it too.
+# For now, we'll keep it as it's the "product".
+
+# Env vars
+.env

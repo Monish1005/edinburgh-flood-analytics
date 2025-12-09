@@ -1,0 +1,17 @@
+{
+  "h": {
+    "total_damage": 225350919.2,
+    "affected_buildings": 130,
+    "scenario_name": "10-yr"
+  },
+  "m": {
+    "total_damage": 432380005.4,
+    "affected_buildings": 751,
+    "scenario_name": "200-yr"
+  },
+  "l": {
+    "total_damage": 1129218418.8000002,
+    "affected_buildings": 2090,
+    "scenario_name": "1000-yr"
+  }
+}
