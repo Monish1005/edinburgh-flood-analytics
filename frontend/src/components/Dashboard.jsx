@@ -187,13 +187,18 @@ const Dashboard = ({
                         </div>
                     </div>
                     <div className="flex gap-2">
+                        {/* Help / Tour Button (Now Inline & Premium) */}
                         <button
-                            onClick={() => setIsLimitationsOpen(true)}
-                            className="p-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-colors border border-amber-500/30"
-                            title="Model Limitations"
+                            onClick={() => runTour()}
+                            className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+                            title="Start Tour Guide"
                         >
-                            <AlertTriangle size={18} />
+                            <span className="flex items-center gap-2">
+                                <CircleHelp size={18} />
+                                <span className="hidden lg:inline text-xs font-bold uppercase tracking-wider">Help</span>
+                            </span>
                         </button>
+
                         <button
                             onClick={() => setIsDocsOpen(true)}
                             className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors border border-slate-700"
@@ -201,23 +206,24 @@ const Dashboard = ({
                         >
                             <BookOpen size={18} />
                         </button>
-                    </div>
-                </div>             {/* Help / Tour Button */}
-                <button
-                    onClick={() => runTour()}
-                    className="text-slate-400 hover:text-blue-400 transition-colors p-1"
-                    title="Start Tour"
-                >
-                    <CircleHelp size={20} />
-                </button>
 
-                {/* Mobile Close Button (Visible mainly on small screens inside content) */}
-                <button
-                    onClick={() => setIsOpen(false)}
-                    className="md:hidden text-slate-400 hover:text-white"
-                >
-                    <ChevronLeft size={24} />
-                </button>
+                        <button
+                            onClick={() => setIsLimitationsOpen(true)}
+                            className="p-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-colors border border-amber-500/30"
+                            title="Model Limitations"
+                        >
+                            <AlertTriangle size={18} />
+                        </button>
+
+                        {/* Mobile Close Button */}
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="md:hidden p-2 rounded-lg bg-slate-800 text-slate-400 hover:text-white border border-slate-700 ml-2"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+                    </div>
+                </div>
 
                 {/* Location Search (Autocomplete) & GPS */}
                 <div id="search-container" className="mb-6 z-50 relative"> {/* z-50 for dropdown */}
@@ -604,15 +610,15 @@ const Dashboard = ({
             </div >
 
             {/* Toggle Button Container (Hanging outside the drawer) */}
-            < div className="absolute top-4 left-full ml-4 z-50" >
+            <div className={`absolute top-6 transition-all duration-300 z-50 ${isOpen ? 'left-80 md:left-96 ml-0 md:-ml-5' : 'left-0 ml-4'}`}>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`glass-button w-10 h-10 flex items-center justify-center rounded-full shadow-lg ${isOpen ? 'hidden md:flex' : 'flex'}`}
+                    className="glass-button w-8 h-12 flex items-center justify-center rounded-r-lg shadow-2xl border-l-0 border-slate-600 bg-slate-900/90 text-slate-400 hover:text-white hover:bg-blue-600/20 transition-all"
                     title={isOpen ? "Minimize Dashboard" : "Open Dashboard"}
                 >
-                    {isOpen ? <ChevronLeft size={20} /> : <Menu size={20} />}
+                    {isOpen ? <ChevronLeft size={16} /> : <Menu size={20} />}
                 </button>
-            </div >
+            </div>
 
             {/* Documentation Modal */}
             < Documentation isOpen={isDocsOpen} onClose={() => setIsDocsOpen(false)} />
